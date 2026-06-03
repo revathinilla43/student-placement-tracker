@@ -1,7 +1,17 @@
 import { useState } from "react";
-function StudentForm(){
+function StudentForm({students,setStudents}){
     const[name,setName]=useState("");
     const[rollNo,setRollNo]=useState("");
+    const addStudent=()=>{
+        const newStudent={
+            name:name,
+            rollNo:rollNo
+        };
+        setStudents([...students,newStudent]);
+
+        setName("");
+        setRollNo("");
+    };
      
     return(
         <>
@@ -19,7 +29,7 @@ function StudentForm(){
                onChange={(e)=>setRollNo(e.target.value)}/>
         <br></br>
 
-        <button>Add Student</button>
+        <button onClick={addStudent}>Add Student</button>
 
         <p>Name:{name}</p>
         <p>Roll No:{rollNo}</p>
