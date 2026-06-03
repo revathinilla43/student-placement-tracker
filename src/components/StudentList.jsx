@@ -13,12 +13,12 @@ function StudentList({students,setStudents,search}){
      
     return (
     <>
-    <h2>Student List</h2>
+    <h2>📃Student List</h2>
     {filteredStudents.map((student,index)=>(
 
     <div key={index}>
         <p>
-        {student.name}-{student.rollNo} 
+        {student.name}-{student.rollNo}-{student.status}
     </p>
 
     <button onClick={()=>deleteStudent(index)}>Delete</button>

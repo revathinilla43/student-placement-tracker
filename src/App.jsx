@@ -9,7 +9,7 @@ function App(){
   return(
     <>
       <h1>Student Placement Tracker</h1>
-      <Dashboard />
+      <Dashboard  students={students}/>
       <StudentForm 
         students={students}
         setStudents={setStudents} 
