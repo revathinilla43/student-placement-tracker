@@ -1,15 +1,34 @@
-import { useState } from "react";
-function StudentForm({students,setStudents}){
+import { useState,useEffect } from "react";
+
+function StudentForm({students,setStudents,editIndex,setEditIndex}){
     const[status,setStatus]=useState("Applied");
     const[name,setName]=useState("");
     const[rollNo,setRollNo]=useState("");
+
+    useEffect(()=>{
+        if(editIndex!==null){
+            setName(students[editIndex].name);
+            setRollNo(students[editIndex].rollNo);
+            setStatus(students[editIndex].status);
+        }
+    },[editIndex,students]);
+
     const addStudent=()=>{
         const newStudent={
             name:name,
             rollNo:rollNo,
             status:status,
         };
-        setStudents([...students,newStudent]);
+        if(editIndex!=null){
+            const updatedStudents=[...students];
+            updatedStudents[editIndex] = newStudent;
+            setStudents(updatedStudents);
+            setEditIndex(null);
+          } else {
+             setStudents([...students, newStudent]);
+         }
+
+   
 
         setName("");
         setRollNo("");
@@ -45,7 +64,9 @@ function StudentForm({students,setStudents}){
         
 
 
-        <button onClick={addStudent}>➕Add Student</button>
+        <button onClick={addStudent}>
+          {editIndex !== null ? "✏️ Update Student" : "➕ Add Student"}
+        </button>
 
         <p>👤Name:{name}</p>
         <p>🔢Roll No:{rollNo}</p>
