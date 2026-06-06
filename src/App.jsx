@@ -17,8 +17,11 @@ function App(){
   const [editIndex, setEditIndex] = useState(null);
   const[filterStatus,setFilterStatus]=useState("All");
   return(
-    <>
-      <h1>Student Placement Tracker</h1>
+    <div className="container">
+      <h1>🎓 Student Placement Tracker 🚀</h1>
+      <p className="subtitle">
+  Manage and track student placement status efficiently 🚀
+</p>
       <Dashboard  students={students}/>
       <StudentForm 
         students={students}
@@ -26,8 +29,7 @@ function App(){
         editIndex={editIndex}
         setEditIndex={setEditIndex}
       />
-      <p>Total Students:{students.length}</p> 
-
+      <div className='toolbar'>
       <input 
         type="text" 
         placeholder="Search students..." 
@@ -44,6 +46,7 @@ function App(){
   <option value="Rejected">Rejected</option>
   <option value="Applied">Applied</option>
 </select>
+</div>
       <StudentList students={students}
                    setStudents={setStudents}
                    search={search}
@@ -51,7 +54,7 @@ function App(){
                     filterStatus={filterStatus}
                    setEditIndex={setEditIndex}/>
 
-    </>
+    </div>
   );
 }
 export default App;

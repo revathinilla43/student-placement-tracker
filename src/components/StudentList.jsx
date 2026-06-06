@@ -19,26 +19,37 @@ function StudentList({students,setStudents,search,filterStatus,setEditIndex}){
 });
      
     return (
-    <>
-    <h2>📃Student List</h2>
-    {filteredStudents.map((student,index)=>(
+  <>
+    <h2>📃 Student List</h2>
 
-    <div key={index}>
-        <p>
-        {student.name}-{student.rollNo}-{student.status}
-    </p>
+    {filteredStudents.length === 0 ? (
+      <p>📭 No students found.</p>
+    ) : (
+      filteredStudents.map((student, index) => (
+        <div className="student-card" key={index}>
+          <p><strong>👤 Name:</strong> {student.name}</p>
 
-    <button onClick={() => setEditIndex(index)}>
-  Edit
-</button>
+          <p><strong>🆔 Roll No:</strong> {student.rollNo}</p>
 
-<button onClick={() => deleteStudent(index)}>
-  Delete
-</button>
-    </div>
-    ))}
-    </>
-    );
+          <p><strong>📌 Status:</strong> {student.status}</p>
 
+          <button
+            className="edit-btn"
+            onClick={() => setEditIndex(index)}
+          >
+            ✏️ Edit
+          </button>
+
+          <button
+            className="delete-btn"
+            onClick={() => deleteStudent(index)}
+          >
+            🗑️ Delete
+          </button>
+        </div>
+      ))
+    )}
+  </>
+);
 }
 export default StudentList;
