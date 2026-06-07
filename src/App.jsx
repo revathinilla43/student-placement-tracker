@@ -1,4 +1,4 @@
-import PlacementChart from "./components/PlacementChart";
+import PlacementChart from "./components/";
 import "./App.css";
 import { useState,useEffect } from 'react';
 import Dashboard from "./components/Dashboard";
