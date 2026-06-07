@@ -14,6 +14,18 @@ function StudentForm({students,setStudents,editIndex,setEditIndex}){
     },[editIndex,students]);
 
     const addStudent=()=>{
+        if(name.trim()==="" || rollNo.trim()===""){
+     alert("Please fill all fields");
+          return;
+  }
+        const exists = students.some(
+  (student) => student.rollNo === rollNo
+);
+
+if(exists && editIndex===null){
+  alert("Roll Number already exists");
+  return;
+}
         const newStudent={
             name:name,
             rollNo:rollNo,
@@ -68,9 +80,7 @@ function StudentForm({students,setStudents,editIndex,setEditIndex}){
           {editIndex !== null ? "✏️ Update Student" : "➕ Add Student"}
         </button>
 
-        <p>👤Name:{name}</p>
-        <p>🔢Roll No:{rollNo}</p>
-        <p>📌Status:{status}</p>
+        
         </>
 
         

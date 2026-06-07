@@ -10,10 +10,20 @@ function Dashboard({ students }) {
   const rejectedCount = students.filter(
     (student) => student.status === "Rejected"
   ).length;
+  const totalStudents = students.length;
+
+const placementRate =
+  totalStudents === 0
+    ? 0
+    : Math.round((selectedCount / totalStudents) * 100);
+
+    const appliedCount = students.filter(
+  student => student.status === "Applied"
+).length;
 
   return (
     <>
-      <h2>📊 Dashboard</h2>
+      <h2 className="dashboard-title">📊 Dashboard</h2>
 
       <div className="dashboard-cards">
 
@@ -36,6 +46,14 @@ function Dashboard({ students }) {
           <h3>❌ Rejected</h3>
           <p>{rejectedCount}</p>
         </div>
+        <div className="card">
+  <h3>📈 Placement Rate</h3>
+  <p>{placementRate}%</p>
+</div>
+<div className="card">
+  <h3>📝 Applied</h3>
+  <p>{appliedCount}</p>
+</div>
 
       </div>
     </>
